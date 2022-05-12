@@ -1,6 +1,10 @@
 var express = require('express');
 const app = express();
-const port =process.env.PORT||8210;
+const bodyParser = require ('body-parser')
+var cors = require("cors");
+
+const port =process.env.PORT||4000;
+
 
 var games = [
     {
@@ -39,25 +43,11 @@ var games = [
         "date":"Tuesday,Apr21, 2020",
         "price":"91"
     },
-    {
-        "id":5,
-        "start_time":"10.35 PM",
-        "end_time":"03.50 PM",
-        "team_name1":"Barcelona(BCN)",
-        "team_name2":"Rome(ROM)",
-        "date":"Tuesday,Apr21, 2020",
-        "price":"82"
-    },
-    {
-        "id":6,
-        "start_time":"10.30 AM",
-        "end_time":"12.20 AM",
-        "team_name1":"Barcelona(BCN)",
-        "team_name2":"Rome(ROM)",
-        "date":"Tuesday,Apr21, 2020",
-        "price":"56"
-    },
 ]
+
+
+app.use(cors())
+app.use(bodyParser())
 //get
 
 app.get('/',(req, res) => {
@@ -71,3 +61,22 @@ app.get('/games',(req, res) => {
 app.listen(port,() => {
     console.log(`listening on port no ${port}`)
 });
+
+ // {
+    //     "id":5,
+    //     "start_time":"10.35 PM",
+    //     "end_time":"03.50 PM",
+    //     "team_name1":"Barcelona(BCN)",
+    //     "team_name2":"Rome(ROM)",
+    //     "date":"Tuesday,Apr21, 2020",
+    //     "price":"82"
+    // },
+    // {
+    //     "id":6,
+    //     "start_time":"10.30 AM",
+    //     "end_time":"12.20 AM",
+    //     "team_name1":"Barcelona(BCN)",
+    //     "team_name2":"Rome(ROM)",
+    //     "date":"Tuesday,Apr21, 2020",
+    //     "price":"56"
+    // },
